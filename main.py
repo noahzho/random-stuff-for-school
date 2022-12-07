@@ -1,18 +1,18 @@
 def on_button_pressed_a():
     radio.send_string("Hello Earth!")
     basic.show_icon(IconNames.YES)
-    control.wait_micros(1000)
+    control.wait_micros(1000) #delay between clearing the screen, line below this clears screen
     basic.show_leds("""
         . . . . .
-                . . . . .
-                . . . . .
-                . . . . .
-                . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
+        . . . . .
     """)
 input.on_button_pressed(Button.A, on_button_pressed_a)
 
 def on_button_pressed_ab():
-    radio.send_string("")
+    radio.send_string("") #custom message goes here
 input.on_button_pressed(Button.AB, on_button_pressed_ab)
 
 def on_received_string(receivedString):
@@ -25,7 +25,8 @@ def on_button_pressed_b():
     radio.send_string("")
 input.on_button_pressed(Button.B, on_button_pressed_b)
 
-serial.redirect_to_usb()
+
+serial.redirect_to_usb() #send radio recieved strings through usb to computer for logging and readability
 radio.set_group(17)
 
 def on_forever():
